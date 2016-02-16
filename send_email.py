@@ -20,12 +20,12 @@ def send_email(fm_load, fy_load, tm_load, ty_load, table_name):
 \n\nAs of %s, local database is up-to-date with ASPM website through %s. \n\nName" % (table_name, from_date, to_date, time_now, to_date)
     
     o = win32com.client.Dispatch("Outlook.Application")
-    	try:
-    	    Msg = o.CreateItem(0)
-    	    Msg.To = recipient
-    	    Msg.Subject = subject
-    	    Msg.Body = body
-    	    Msg.Send()
-    	    print '\nSuccessfully Sent Email Notice!'
-    	except:
-    	    print "\nFailed to Send Email Notice!"
+    try:
+        Msg = o.CreateItem(0)
+        Msg.To = recipient
+        Msg.Subject = subject
+        Msg.Body = body
+        Msg.Send()
+        print '\nSuccessfully Sent Email Notice!'
+    except:
+        print "\nFailed to Send Email Notice!"
