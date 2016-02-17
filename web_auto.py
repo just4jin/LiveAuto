@@ -10,16 +10,7 @@ def read_login():
 
 def web_login(browser_name):
     username, password = read_login()
-    
-    if browser_name == 'FIREFOX':
-        browser = webdriver.Firefox()
-    elif browser_name == 'CHROME':	
-	co = webdriver.ChromeOptions()
-	co.add_argument("disable-extensions")
-	browser = webdriver.Chrome(chrome_options=co)
-    elif browser_name == 'IE':
-	browser = webdriver.Ie()
-	
+    browser = webdriver.PhantomJS(service_log_path=os.path.devnull)
     browser.get("https://aspm.faa.gov/")
     login = browser.find_element_by_link_text("Login").click()
     user = browser.find_element_by_id("text1").send_keys(username)
